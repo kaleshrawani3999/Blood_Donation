@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Matched Donors</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background:#f8f9fa;
+}
+
+h2{
+color:#dc3545;
+}
+
+.table thead{
+background:#dc3545;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+<h2 class="text-center mb-4">🩸 Matched Blood Donors</h2>
+
+<table class="table table-bordered table-hover shadow">
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Location</th>
+<th>Contact Donor</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for donor in donors %}
+
+<tr>
+
+<td>{{ donor[0] }}</td>
+<td>{{ donor[1] }}</td>
+<td>{{ donor[2] }}</td>
+
+<td>
+
+<!-- Call Button -->
+<a href="tel:{{ donor[1] }}" class="btn btn-primary btn-sm">
+📞 Call
+</a>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/91{{ donor[1] }}?text=Hello%20{{ donor[0] }},%20I%20need%20{{ blood }}%20blood%20donation.%20Please%20help."
+class="btn btn-success btn-sm"
+target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
