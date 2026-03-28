@@ -250,9 +250,24 @@ padding:10px 15px;
 
 <div class="card p-3 shadow">
 
-<h4>{{ group }}</h4>
-<h2>{{ count }}</h2>
+<script>
+let blood_data = {
+    "A+": 10,
+    "B+": 5,
+    "O+": 8
+};
 
+let container = document.getElementById("blood-container");
+
+for (let group in blood_data) {
+    container.innerHTML += `
+        <div class="card">
+            <h3>${group}</h3>
+            <p>${blood_data[group]}</p>
+        </div>
+    `;
+}
+</script>
 </div>
 
 </div>
