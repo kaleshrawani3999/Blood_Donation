@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 import random
 import os
 
-
 # AI
 from openai import OpenAI
 
@@ -48,7 +47,7 @@ db = mysql.connector.connect(
     database="blood_donation"
 )
 
-cursor = db.cursor()
+cursor = db.cursor(buffered=True)
 
 
 # ---------------- HOME ----------------
@@ -151,6 +150,10 @@ def register():
 
     return render_template('register.html')
 
+# -----------------ABOUT PAGE------------
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 # ---------------- EMAIL FUNCTION ----------------
 def send_blood_alert(email, blood_group, location, priority):
@@ -224,7 +227,7 @@ def change_password():
             database="blood_donation"
         )
 
-        cursor = conn.cursor()
+        cursor = db.cursor(buffered=True)
 
         cursor.execute("SELECT password FROM admin WHERE id=1")
         current = cursor.fetchone()[0]
